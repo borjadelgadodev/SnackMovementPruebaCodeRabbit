@@ -10,4 +10,10 @@ class NotificationsViewModel : ViewModel() {
         value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
+
+    private val _text2 = MutableLiveData<String>().apply {
+        value = "This is notifications Fragment 2"
+    }
+    val text2: LiveData<String> = _text2
+
 }
