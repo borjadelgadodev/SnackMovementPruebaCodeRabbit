@@ -36,10 +36,28 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+        observerViewModel2()
         return root
     }
 
     private fun observerViewModel(){
+        notificationsViewModel.text2.observe(viewLifecycleOwner) {
+            binding.textNotifications2.text = it
+        }
+    }
+
+    private fun observerViewModel2(){
+        notificationsViewModel.text2.observe(viewLifecycleOwner) {
+            binding.textNotifications2.text = it
+        }
+        observerViewModel3().apply {
+            notificationsViewModel.text2.observe(viewLifecycleOwner) {
+                binding.textNotifications2.text = it
+            }
+        }
+    }
+
+    private fun observerViewModel3(){
         notificationsViewModel.text2.observe(viewLifecycleOwner) {
             binding.textNotifications2.text = it
         }
