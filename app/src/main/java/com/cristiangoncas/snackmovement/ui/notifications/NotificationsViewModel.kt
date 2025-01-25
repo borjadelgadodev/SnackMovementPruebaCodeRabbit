@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 
 class NotificationsViewModel : ViewModel() {
 
-    val prueba = "CodeRabbit"
-    val prueba2 = "CodeRabbit2"
-
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
 
+    private val _text2 = MutableLiveData<String>().apply {
+        value = "This is notifications Fragment 2"
+    }
+    val text2: LiveData<String> = _text2
 
 }

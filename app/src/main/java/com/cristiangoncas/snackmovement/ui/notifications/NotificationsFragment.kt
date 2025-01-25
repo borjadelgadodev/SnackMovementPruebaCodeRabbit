@@ -16,15 +16,19 @@ class NotificationsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val notificationsViewModel = NotificationsViewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Observer ViewModel
+        observerViewModel()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -33,6 +37,12 @@ class NotificationsFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    private fun observerViewModel(){
+        notificationsViewModel.text2.observe(viewLifecycleOwner) {
+            binding.textNotifications2.text = it
+        }
     }
 
     override fun onDestroyView() {
